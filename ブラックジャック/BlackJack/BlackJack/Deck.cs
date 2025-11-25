@@ -8,7 +8,15 @@ namespace BlackJack
 {
     internal class Deck
     {
-       
+        int[] TDeck = new int[52];
+        public Deck()
+        {
+            for (int i = 0; i < TDeck.Length; i++)
+            {
+                TDeck[i] = i + 1;
+            }
+
+        }
        
     }
 }
