@@ -8,5 +8,7 @@ namespace BlackJack
 {
     internal class Deck
     {
+       
+       
     }
 }
