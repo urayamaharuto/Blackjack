@@ -45,6 +45,8 @@ namespace BlackJack
                 TDeck[i * 4 + 3] = new Card(Card.Mark.spade, i + 1);
 
             }
+
+
         }
 
         public Card Draw()
