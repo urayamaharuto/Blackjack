@@ -8,15 +8,57 @@ namespace BlackJack
 {
     internal class Deck
     {
-        int[] TDeck = new int[52];
+        Card[] TDeck = new Card[52];
+
+
+        //フォーだの数式を入れるときはパブリックなんちゃらを作る
         public Deck()
         {
-            for (int i = 0; i < TDeck.Length; i++)
-            {
-                TDeck[i] = i + 1;
-            }
 
+
+            //if (i < 13)
+            //{
+            //    Console.WriteLine("♡" + TDeck[i]);
+            //}
+            //else if (i < 26)
+            //{
+            //    Console.WriteLine("♢" + TDeck[i]);
+            //}
+            //else if (i < 39)
+            //{
+            //    Console.WriteLine("♤" + TDeck[i]);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("♧" + TDeck[i]);
+            //}
+
+
+            //TDeckの中身に1から13までの数字を入れる
+            //カードのところにあるmarkとnanabの中身をCardの中に入れている
+            for (int i = 0; i < 13; i++)
+            {
+                
+                TDeck[i * 4 + 0] = new Card(Card.Mark.clover, i + 1);
+                TDeck[i * 4 + 1] = new Card(Card.Mark.diamond, i + 1);
+                TDeck[i * 4 + 2] = new Card(Card.Mark.heart, i + 1);
+                TDeck[i * 4 + 3] = new Card(Card.Mark.spade, i + 1);
+
+            }
         }
-       
+
+        public Card Draw()
+        {
+            //ドローしたときにランダムなカードを引かせる布石
+            Random random = new Random();
+            int doro;
+            doro = random.Next(52);
+
+            return TDeck[doro];
+        }
+        public Card Draw(int i)
+        {
+            return TDeck[i];
+        }
     }
 }
