@@ -8,5 +8,6 @@ namespace BlackJack
 {
     internal class Player
     {
+
     }
 }

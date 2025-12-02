@@ -8,5 +8,6 @@ namespace BlackJack
 {
     internal class Hand
     {
+     public List<Card> Card = new List<Card>();
     }
 }

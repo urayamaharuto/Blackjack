@@ -29,8 +29,17 @@ namespace BlackJack
         {
             mark = _mark;
             nanba = _nanba;
-
-        
+        }
+        public int Ten() 
+        {
+            //エースの時
+            if(nanba == 1)
+                return 11;
+            //ジャック、クイーン、キング
+            if (nanba <= 11) 
+                return 10;
+            //その他
+            return nanba;
         }
         
 
