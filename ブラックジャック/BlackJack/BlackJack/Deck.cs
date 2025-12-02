@@ -50,17 +50,24 @@ namespace BlackJack
         }
 
         public Card Draw()
-        {
-            //ドローしたときにランダムなカードを引かせる布石
-            Random random = new Random();
+       {
+           Random random = new Random();
             int doro;
-            doro = random.Next(52);
 
-            return TDeck[doro];
-        }
-        public Card Draw(int i)
-        {
-            return TDeck[i];
-        }
+            do 
+            {
+                doro = random.Next(52);
+            }
+            //ドローしたカードを無視
+            while (TDeck[doro] == null);
+
+            Card boti = TDeck[doro];
+
+            //ドローしたカードを無力化する
+            TDeck[doro] = null;
+
+            return boti;
+
+       }
     }
 }
