@@ -1,0 +1,14 @@
+diff a/ブラックジャック/BlackJack/BlackJack/Hand.cs b/ブラックジャック/BlackJack/BlackJack/Hand.cs	(rejected hunks)
+@@ -0,0 +1,12 @@
++﻿using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Text;
++using System.Threading.Tasks;
++
++namespace BlackJack
++{
++    internal class Hand
++    {
++    }
++}

@@ -8,6 +8,9 @@ namespace BlackJack
 {
     internal class Player
     {
-
+        internal static object GetTotal()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

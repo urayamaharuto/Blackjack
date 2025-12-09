@@ -48,7 +48,12 @@ namespace BlackJack
         }
         public Card Draw()
        {
-           Random random = new Random();
+            // 山札が空か確認
+            if (TDeck.All(c => c == null))
+            {
+                return null;    // 引けない
+            }
+            Random random = new Random();
             int doro;
 
             do 
