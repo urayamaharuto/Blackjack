@@ -22,6 +22,7 @@ namespace BlackJack
         //みんなで使える関数をここで作ってる
         public Mark mark;
         public int nanba = 0;
+        public int ten = 0;
 
         //デッキのトランプカードを作るときに参照するところ
         //例えばデッキの方でspade　5になったらそれがマークとナンバに入る
@@ -30,16 +31,22 @@ namespace BlackJack
             mark = _mark;
             nanba = _nanba;
         }
+
+        
         public int Ten() 
         {
+            ten = nanba;
             //エースの時
-            if(nanba == 1)
-                return 11;
+            if(ten == 1)
+            {
+                ten = 11;
+            }
             //ジャック、クイーン、キング
-            if (nanba <= 11) 
-                return 10;
-            //その他
-            return nanba;
+            else if (ten > 10)
+            {
+                ten = 10;
+            }
+            return ten;
         }
         
 

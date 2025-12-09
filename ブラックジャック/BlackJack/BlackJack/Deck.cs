@@ -37,18 +37,15 @@ namespace BlackJack
             //TDeckの中身に1から13までの数字を入れる
             //カードのところにあるmarkとnanabの中身をCardの中に入れている
             for (int i = 0; i < 13; i++)
-            {
+            { 
                 
-                TDeck[i * 4 + 0] = new Card(Card.Mark.clover, i + 1);
+                TDeck[i * 4 + 0] = new Card(Card.Mark.clover,  i + 1);
                 TDeck[i * 4 + 1] = new Card(Card.Mark.diamond, i + 1);
-                TDeck[i * 4 + 2] = new Card(Card.Mark.heart, i + 1);
-                TDeck[i * 4 + 3] = new Card(Card.Mark.spade, i + 1);
+                TDeck[i * 4 + 2] = new Card(Card.Mark.heart,   i + 1);
+                TDeck[i * 4 + 3] = new Card(Card.Mark.spade,   i + 1);
 
             }
-
-
         }
-
         public Card Draw()
        {
            Random random = new Random();
