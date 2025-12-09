@@ -25,15 +25,14 @@ namespace BlackJack
 
           
             
-            foreach (Card c in Card)
+            foreach (Card ten2 in Card)
             {
 
-                Console.WriteLine($"マーク:{c.mark} 数字:{c.nanba}");
-                int v = c.Ten();
+                Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
+                int v = ten2.Ten();
                 total += v;
-                if (c.nanba == 1) aceCount++; // A の数を数える
+                if (ten2.nanba == 1) aceCount++; // A の数を数える
             }
-            Console.WriteLine($"合計:{Player.GetTotal()}");
             // A が 11 で合計が21を超えたら、1として扱う
             while (total > 21 && aceCount > 0)
             {

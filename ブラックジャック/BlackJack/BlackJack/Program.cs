@@ -25,10 +25,8 @@ namespace BlackJack
 
 
             Card card = deck.Draw();
-
             if (card == null)
             {
-
                 if (deck != null)
                 {
                     player.AddCard(card);
@@ -39,14 +37,15 @@ namespace BlackJack
             }
 
             //cardの中に入ってるmarkとnanbaを入れている
-            Console.WriteLine($"マーク:{card.mark} 数字:{card.nanba}");
+            player.AddCard(card);
             card = deck.Draw();
-
             player.AddCard(card);
 
-            //cardの中に入ってるmarkとnanbaを入れている
-            Console.WriteLine($"マーク:{card.mark} 数字:{card.nanba}");
 
+     
+
+
+            DisplayHand(player);
         }
 
         static void DisplayHand(Hand h)
