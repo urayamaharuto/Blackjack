@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.XPath;
 
 namespace BlackJack
 {
@@ -13,6 +14,7 @@ namespace BlackJack
             Deck deck = new Deck();
             Hand pldyer = new Hand();
             Hand dealer = new Hand();
+            Hand hand = new Hand();
 
             //これでドローができる
             //カードの中のカードにデッキのドローの
@@ -40,6 +42,39 @@ namespace BlackJack
 
 
             DisplayHand(player);
+
+            //選択をさせるやつ　ヒットスタンド作る
+            int sentaku = 0;
+            while (sentaku > 2 || sentaku < 2)
+            {
+                Console.WriteLine("ヒットしたいなら：1　スタンドなら：2　を入力してね");
+                sentaku = int.Parse(Console.ReadLine());
+
+                if (sentaku == 1)
+                {
+                    //一枚ドロー
+                    card = deck.Draw();
+                    if (card == null)
+                    {
+                        if (deck != null)
+                        {
+                            player.AddCard(card);
+
+                            Console.WriteLine("山札がありません！");
+                            return; // ゲーム停止
+                        }
+                    }
+                    //cardの中に入ってるmarkとnanbaを入れている
+                    player.AddCard(card);
+
+                    DisplayHand(player);
+                }
+                else if (sentaku == 2)
+                {
+                    Console.WriteLine("ターンエンド！");
+                }
+                else { Console.WriteLine("そうかそうか。つまり君はそんなやつなんだな。"); }
+            }
         }
         static void DisplayHand(Hand h)
         {
@@ -48,7 +83,7 @@ namespace BlackJack
             //    Console.WriteLine($"{c.mark} {c.nanba}");
             //}
             Console.WriteLine("合計:" + h.GetTotal());
-
         }
+        
     }
 }
