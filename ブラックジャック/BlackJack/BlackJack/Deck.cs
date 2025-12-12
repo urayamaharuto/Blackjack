@@ -14,8 +14,6 @@ namespace BlackJack
         //フォーだの数式を入れるときはパブリックなんちゃらを作る
         public Deck()
         {
-
-
             //if (i < 13)
             //{
             //    Console.WriteLine("♡" + TDeck[i]);
@@ -32,7 +30,6 @@ namespace BlackJack
             //{
             //    Console.WriteLine("♧" + TDeck[i]);
             //}
-
 
             //TDeckの中身に1から13までの数字を入れる
             //カードのところにあるmarkとnanabの中身をCardの中に入れている
@@ -63,13 +60,12 @@ namespace BlackJack
             //ドローしたカードを無視
             while (TDeck[doro] == null);
 
-            Card boti = TDeck[doro];
+            Card ikinokori = TDeck[doro];
 
             //ドローしたカードを無力化する
             TDeck[doro] = null;
 
-            return boti;
-
-       }
+            return ikinokori;
+        }
     }
 }

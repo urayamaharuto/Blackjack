@@ -8,7 +8,6 @@ namespace BlackJack
 {
     internal class Program
     {
-
         static void Main(string[] args)
         {
             Deck deck = new Deck();
@@ -23,7 +22,6 @@ namespace BlackJack
             Hand player = new Hand();
 
 
-
             Card card = deck.Draw();
             if (card == null)
             {
@@ -35,26 +33,20 @@ namespace BlackJack
                     return; // ゲーム停止
                 }
             }
-
             //cardの中に入ってるmarkとnanbaを入れている
             player.AddCard(card);
             card = deck.Draw();
             player.AddCard(card);
 
 
-     
-
-
             DisplayHand(player);
         }
-
         static void DisplayHand(Hand h)
         {
-
-            foreach (Card c in h.Card)
-            {
-                Console.WriteLine($"{c.mark} {c.nanba}");
-            }
+            //foreach (Card c in h.Card)
+            //{
+            //    Console.WriteLine($"{c.mark} {c.nanba}");
+            //}
             Console.WriteLine("合計:" + h.GetTotal());
 
         }

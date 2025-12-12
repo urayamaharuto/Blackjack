@@ -9,7 +9,6 @@ namespace BlackJack
 {
     public class Card
     {
-
         //新しい関数を作るやつ enum
         //関数Markにトランプのマークを入れている
         public enum Mark
@@ -31,8 +30,6 @@ namespace BlackJack
             mark = _mark;
             nanba = _nanba;
         }
-
-        
         public int Ten() 
         {
             ten = nanba;
@@ -48,9 +45,6 @@ namespace BlackJack
             }
             return ten;
         }
-        
-
     }
-        
 }
 

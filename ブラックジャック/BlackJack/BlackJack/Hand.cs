@@ -10,7 +10,6 @@ namespace BlackJack
     {
         public List<Card> Card = new List<Card>();
 
-
         // 手札にカード追加
         public void AddCard(Card card)
         {
@@ -23,11 +22,8 @@ namespace BlackJack
             int total = 0;
             int aceCount = 0;
 
-          
-            
             foreach (Card ten2 in Card)
             {
-
                 Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
                 int v = ten2.Ten();
                 total += v;
@@ -39,9 +35,7 @@ namespace BlackJack
                 total -= 10; // 11 → 1 に変換
                 aceCount--;
             }
-
             return total;
-
         }
     }
 }
