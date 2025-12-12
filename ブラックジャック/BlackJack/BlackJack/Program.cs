@@ -12,9 +12,7 @@ namespace BlackJack
         static void Main(string[] args)
         {
             Deck deck = new Deck();
-            Hand pldyer = new Hand();
             Hand dealer = new Hand();
-            Hand hand = new Hand();
 
             //これでドローができる
             //カードの中のカードにデッキのドローの
@@ -45,10 +43,21 @@ namespace BlackJack
 
             //選択をさせるやつ　ヒットスタンド作る
             int sentaku = 0;
-            while (sentaku > 2 || sentaku < 2)
+            while (sentaku != 2)
             {
                 Console.WriteLine("ヒットしたいなら：1　スタンドなら：2　を入力してね");
                 sentaku = int.Parse(Console.ReadLine());
+
+                //switch (sentaku)
+                //{
+                //    case 0:
+
+                //        break;
+
+                //    default:
+
+                //        break;
+                //}
 
                 if (sentaku == 1)
                 {
