@@ -20,7 +20,7 @@ namespace BlackJack
             Random random = new Random();
 
             Hand player = new Hand();
-
+            Dealer oya = new Dealer();
 
             Card card = deck.Draw();
             if (card == null)
@@ -38,7 +38,6 @@ namespace BlackJack
             card = deck.Draw();
             player.AddCard(card);
 
-
             DisplayHand(player);
 
             //選択をさせるやつ　ヒットスタンド作る
@@ -48,17 +47,13 @@ namespace BlackJack
                 Console.WriteLine("ヒットしたいなら：1　スタンドなら：2　を入力してね");
                 sentaku = int.Parse(Console.ReadLine());
 
-                //switch (sentaku)
+                //switch (sentaku) 使い方がよくわからなーい(´･ω･`)
                 //{
                 //    case 0:
-
                 //        break;
-
                 //    default:
-
                 //        break;
                 //}
-
                 if (sentaku == 1)
                 {
                     //一枚ドロー
@@ -81,6 +76,26 @@ namespace BlackJack
                 else if (sentaku == 2)
                 {
                     Console.WriteLine("ターンエンド！");
+                    Console.WriteLine("親のターンだぜ！");
+
+                    // 親のターンに移行する（ごり押し）
+                    card = deck.Draw();
+                    if (card == null)
+                    {
+                        if (deck != null)
+                        {
+                            player.AddCard(card);
+
+                            Console.WriteLine("山札がありません！");
+                            return; // ゲーム停止
+                        }
+                    }
+                    //cardの中に入ってるmarkとnanbaを入れている
+                    oya.AddCard(card);
+                    card = deck.Draw();
+                    oya.AddCard(card);
+
+                    DisplayDealer(oya);
                 }
                 else { Console.WriteLine("そうかそうか。つまり君はそんなやつなんだな。"); }
             }
@@ -91,8 +106,18 @@ namespace BlackJack
             //{
             //    Console.WriteLine($"{c.mark} {c.nanba}");
             //}
+            //点数を表示するやつ
             Console.WriteLine("合計:" + h.GetTotal());
         }
-        
+
+        static void DisplayDealer(Dealer h2)
+        {
+            //名前だけ変えてパクった
+            Console.WriteLine("合計:" + h2.GetTotal());
+        }
+        static void asd (Hand a)
+        {
+            Console.WriteLine("ta" + a.GetTotal());
+        }
     }
 }
