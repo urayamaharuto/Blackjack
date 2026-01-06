@@ -45,15 +45,16 @@ namespace BlackJack
             while (sentaku != 2)
             {
                 Console.WriteLine("ヒットしたいなら：1　スタンドなら：2　を入力してね");
-                sentaku = int.Parse(Console.ReadLine());
+                
+                while (true)
+                {
+                    if (int.TryParse(Console.ReadLine(), out sentaku) && (sentaku == 1 || sentaku == 2))
+                    {
+                        break;
+                    }
+                    Console.WriteLine("文字読める?");
+                }
 
-                //switch (sentaku) 使い方がよくわからなーい(´･ω･`)
-                //{
-                //    case 0:
-                //        break;
-                //    default:
-                //        break;
-                //}
                 if (sentaku == 1)
                 {
                     //一枚ドロー
