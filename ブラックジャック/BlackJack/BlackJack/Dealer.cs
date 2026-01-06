@@ -25,7 +25,7 @@ namespace BlackJack
 
             foreach (Card ten2 in D_Card)
             {
-                Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
+                //Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
                 int v = ten2.Ten();
                 D_total += v;
                 if (ten2.nanba == 1) aceCount++; // A の数を数える
@@ -37,6 +37,10 @@ namespace BlackJack
                 aceCount--;
             }
             return D_total;
+        }
+        public bool IsBust()
+        {
+            return GetTotal() > 21;
         }
     }
 }

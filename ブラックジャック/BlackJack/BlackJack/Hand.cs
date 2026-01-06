@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,7 +25,8 @@ namespace BlackJack
 
             foreach (Card ten2 in Card)
             {
-                Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
+                //試行錯誤のたまもの
+                //Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
                 int v = ten2.Ten();
                 total += v;
                 if (ten2.nanba == 1) aceCount++; // A の数を数える
@@ -37,6 +39,14 @@ namespace BlackJack
             }
             return total;
         }
+        //バーストしてるかを判断するところ
+        public bool IsBust()
+        {
+            return GetTotal() > 21;
+        }
+
+
+
     }
 }
 

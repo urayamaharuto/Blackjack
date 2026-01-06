@@ -95,7 +95,7 @@ namespace BlackJack
                     oya.AddCard(card);
                     card = deck.Draw();
                     oya.AddCard(card);
-
+                  
                     DisplayDealer(oya);
                 }
                 else { Console.WriteLine("そうかそうか。つまり君はそんなやつなんだな。"); }
@@ -107,18 +107,37 @@ namespace BlackJack
             //{
             //    Console.WriteLine($"{c.mark} {c.nanba}");
             //}
+            //ごめんちょっと使った
+            foreach (Card ten2 in h.Card)
+            {
+                Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
+            }
             //点数を表示するやつ
             Console.WriteLine("合計:" + h.GetTotal());
+            //バーストしてるかをみる
+            if (h.IsBust())
+            {
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("おまえはもう、バーストしている");
+                Console.WriteLine("------------------------------");
+            }
         }
-
         static void DisplayDealer(Dealer h2)
         {
             //名前だけ変えてパクった
+            
+            foreach (Card ten2 in h2.D_Card)
+            {
+                Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
+            }
             Console.WriteLine("合計:" + h2.GetTotal());
-        }
-        static void asd (Hand a)
-        {
-            Console.WriteLine("ta" + a.GetTotal());
+            //バーストしてるかをみる
+            if (h2.IsBust())
+            {
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("このオレが...バーストだと...！");
+                Console.WriteLine("------------------------------");
+            }
         }
     }
 }
