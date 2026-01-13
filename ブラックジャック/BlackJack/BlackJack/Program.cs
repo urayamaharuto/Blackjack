@@ -11,7 +11,6 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
-
             Deck deck = new Deck();
             Hand dealer = new Hand();
 
@@ -121,13 +120,34 @@ namespace BlackJack
                 }
                 else { Console.WriteLine("そうかそうか。つまり君はそんなやつなんだな。"); }
             }
-            if (H_noisi == D_noisi)
-            { 
-                
+            //結果発表
+            Console.WriteLine();
+            Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+            Console.WriteLine("結果発表！！！！！！！！！！！！！！！！");
+            Console.WriteLine($"おまえが{H_noisi}点で、パソコン君が{D_noisi}でした！");
+            
+            if(H_noisi >= 22)
+            {
+                H_noisi = 0;
             }
-            
+            if(D_noisi >= 22)
+            {
+                D_noisi = 0;
+            }
 
-            
+            if (H_noisi == D_noisi)
+            {
+                Console.WriteLine("機械相手に引き分けって恥ずかしくないんですか？ww");
+            }
+            else if (H_noisi > D_noisi)
+            {
+                Console.WriteLine("わぁ！勝てたんだぁ！勝ててよかったねぇ！...ｗ");
+            }
+            else 
+            {
+                Console.WriteLine("負けちゃったんだぁwwwチー牛だからしょうがないかぁwww"); 
+            }
+            Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
         }
         static void DisplayHand(Hand h)
         {
@@ -150,11 +170,6 @@ namespace BlackJack
                 Console.WriteLine("------------------------------");
             }
         }
-
-
-
-
-
         static void DisplayDealer(Dealer h2)
         {
             foreach (Card ten2 in h2.D_Card)

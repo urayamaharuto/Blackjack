@@ -44,9 +44,6 @@ namespace BlackJack
         {
             return GetTotal() > 21;
         }
-
-
-
     }
 }
 
