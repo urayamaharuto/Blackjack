@@ -11,6 +11,7 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
+
             Deck deck = new Deck();
             Hand dealer = new Hand();
 
@@ -21,6 +22,9 @@ namespace BlackJack
 
             Hand player = new Hand();
             Dealer oya = new Dealer();
+
+            int D_noisi = oya.GetTotal();
+            int H_noisi = player.GetTotal();
 
             Card card = deck.Draw();
             if (card == null)
@@ -85,7 +89,7 @@ namespace BlackJack
                     {
                         if (deck != null)
                         {
-                            player.AddCard(card);
+                            oya.AddCard(card);
 
                             Console.WriteLine("山札がありません！");
                             return; // ゲーム停止
@@ -95,11 +99,35 @@ namespace BlackJack
                     oya.AddCard(card);
                     card = deck.Draw();
                     oya.AddCard(card);
-                  
                     DisplayDealer(oya);
+
+                    //引かなきゃいけないときにもう一枚引く
+                    D_noisi = oya.GetTotal();
+                    H_noisi = player.GetTotal();
+                    while(D_noisi < 16)
+                    {
+                        card = deck.Draw();
+                        oya.AddCard(card);
+                        D_noisi = oya.GetTotal();
+                        DisplayDealer(oya);
+                    }
+                    while (H_noisi > D_noisi && H_noisi <= 21)
+                    {
+                        card = deck.Draw();
+                        oya.AddCard(card);
+                        D_noisi = oya.GetTotal();
+                        DisplayDealer(oya);
+                    }
                 }
                 else { Console.WriteLine("そうかそうか。つまり君はそんなやつなんだな。"); }
             }
+            if (H_noisi == D_noisi)
+            { 
+                
+            }
+            
+
+            
         }
         static void DisplayHand(Hand h)
         {
@@ -122,16 +150,19 @@ namespace BlackJack
                 Console.WriteLine("------------------------------");
             }
         }
+
+
+
+
+
         static void DisplayDealer(Dealer h2)
         {
-            //名前だけ変えてパクった
-            
             foreach (Card ten2 in h2.D_Card)
             {
                 Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
             }
             Console.WriteLine("合計:" + h2.GetTotal());
-            //バーストしてるかをみる
+            
             if (h2.IsBust())
             {
                 Console.WriteLine("------------------------------");
