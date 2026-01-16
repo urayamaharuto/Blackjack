@@ -93,10 +93,6 @@ namespace BlackJack
 
                 if (sentaku == 2)
                 {
-                    Console.WriteLine("ターンエンド！");
-                    Console.WriteLine("親のターンだぜ！");
-
-        
                     card = deck.Draw();
                     if (card == null)
                     {
@@ -111,7 +107,11 @@ namespace BlackJack
 
                 }
             }
+
             //親のターン
+            Console.WriteLine("ターンエンド！");
+            Console.WriteLine("親のターンだぜ！");
+            Console.WriteLine();
             Console.WriteLine("- - - Dealer Turn - - -");
 
             //cardの中に入ってるmarkとnanbaを入れている
