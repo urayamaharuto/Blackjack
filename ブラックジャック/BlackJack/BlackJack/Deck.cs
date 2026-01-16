@@ -43,6 +43,8 @@ namespace BlackJack
         public Card Draw()
        {
             // 山札が空か確認
+
+            // ラムダ式()=>{};
             if (TDeck.All(c => c == null))
             {
                 return null;    // 引けない

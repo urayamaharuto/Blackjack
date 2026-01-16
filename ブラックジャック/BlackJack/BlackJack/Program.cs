@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.XPath;
 
@@ -192,6 +193,7 @@ namespace BlackJack
         }
         static void DisplayDealer(Dealer h2)
         {
+            //Thread.Sleep(1000);
             foreach (Card ten2 in h2.D_Card)
             {
                 Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
