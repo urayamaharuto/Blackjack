@@ -11,6 +11,8 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("- - - Player Turn - - -");
+
             Deck deck = new Deck();
             Hand dealer = new Hand();
 
@@ -47,8 +49,19 @@ namespace BlackJack
             int sentaku = 0;
             while (sentaku != 2)
             {
+                if (player.GetTotal() > 21)
+                {
+                    break;
+                }
+                if (player.GetTotal() == 21)
+                {
+                    Console.WriteLine("ブラックジャック達成！");
+                    Console.WriteLine("カカロット！お前がナンバーワンだ！");
+                    break;
+                }
+
                 Console.WriteLine("ヒットしたいなら：1　スタンドなら：2　を入力してね");
-                
+
                 while (true)
                 {
                     if (int.TryParse(Console.ReadLine(), out sentaku) && (sentaku == 1 || sentaku == 2))
@@ -77,12 +90,13 @@ namespace BlackJack
 
                     DisplayHand(player);
                 }
-                else if (sentaku == 2)
+
+                if (sentaku == 2)
                 {
                     Console.WriteLine("ターンエンド！");
                     Console.WriteLine("親のターンだぜ！");
 
-                    // 親のターンに移行する（ごり押し）
+        
                     card = deck.Draw();
                     if (card == null)
                     {
@@ -94,43 +108,49 @@ namespace BlackJack
                             return; // ゲーム停止
                         }
                     }
-                    //cardの中に入ってるmarkとnanbaを入れている
-                    oya.AddCard(card);
-                    card = deck.Draw();
-                    oya.AddCard(card);
-                    DisplayDealer(oya);
 
-                    //引かなきゃいけないときにもう一枚引く
-                    D_noisi = oya.GetTotal();
-                    H_noisi = player.GetTotal();
-                    while(D_noisi < 16)
-                    {
-                        card = deck.Draw();
-                        oya.AddCard(card);
-                        D_noisi = oya.GetTotal();
-                        DisplayDealer(oya);
-                    }
-                    while (H_noisi > D_noisi && H_noisi <= 21)
-                    {
-                        card = deck.Draw();
-                        oya.AddCard(card);
-                        D_noisi = oya.GetTotal();
-                        DisplayDealer(oya);
-                    }
                 }
-                else { Console.WriteLine("そうかそうか。つまり君はそんなやつなんだな。"); }
             }
+            //親のターン
+            Console.WriteLine("- - - Dealer Turn - - -");
+
+            //cardの中に入ってるmarkとnanbaを入れている
+            oya.AddCard(card);
+            card = deck.Draw();
+            oya.AddCard(card);
+            DisplayDealer(oya);
+
+            //引かなきゃいけないときにもう一枚引く
+            D_noisi = oya.GetTotal();
+            H_noisi = player.GetTotal();
+            while (D_noisi < 16)
+            {
+                card = deck.Draw();
+                oya.AddCard(card);
+                D_noisi = oya.GetTotal();
+                DisplayDealer(oya);
+            }
+
+            while (H_noisi > D_noisi && H_noisi <= 21)
+            {
+                card = deck.Draw();
+                oya.AddCard(card);
+                D_noisi = oya.GetTotal();
+                DisplayDealer(oya);
+            }
+         
+
             //結果発表
             Console.WriteLine();
             Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
             Console.WriteLine("結果発表！！！！！！！！！！！！！！！！");
             Console.WriteLine($"おまえが{H_noisi}点で、パソコン君が{D_noisi}でした！");
-            
-            if(H_noisi >= 22)
+
+            if (H_noisi >= 22)
             {
                 H_noisi = 0;
             }
-            if(D_noisi >= 22)
+            if (D_noisi >= 22)
             {
                 D_noisi = 0;
             }
@@ -143,9 +163,9 @@ namespace BlackJack
             {
                 Console.WriteLine("わぁ！勝てたんだぁ！勝ててよかったねぇ！...ｗ");
             }
-            else 
+            else
             {
-                Console.WriteLine("負けちゃったんだぁwwwチー牛だからしょうがないかぁwww"); 
+                Console.WriteLine("負けちゃったんだぁwwwチー牛だからしょうがないかぁwww");
             }
             Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
         }
@@ -177,7 +197,7 @@ namespace BlackJack
                 Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
             }
             Console.WriteLine("合計:" + h2.GetTotal());
-            
+
             if (h2.IsBust())
             {
                 Console.WriteLine("------------------------------");
