@@ -12,6 +12,13 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
+            Console.ForegroundColor = ConsoleColor.Blue;
+            //Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("- - - Player Turn - - -");
+            Console.ForegroundColor = ConsoleColor.Green;
+=======
 
             while (true)
             {
@@ -40,6 +47,7 @@ namespace BlackJack
 static void PlayGame()
         { 
         Console.WriteLine("- - - Player Turn - - -");
+>>>>>>> origin/main
 
             Deck deck = new Deck();
             Hand dealer = new Hand();
@@ -140,7 +148,9 @@ static void PlayGame()
             Console.WriteLine("ターンエンド！");
             Console.WriteLine("親のターンだぜ！");
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("- - - Dealer Turn - - -");
+            Console.ForegroundColor = ConsoleColor.Green;
 
             //cardの中に入ってるmarkとnanbaを入れている
             oya.AddCard(card);
@@ -166,9 +176,10 @@ static void PlayGame()
                 D_noisi = oya.GetTotal();
                 DisplayDealer(oya);
             }
-         
+
 
             //結果発表
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
             Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
             Console.WriteLine("結果発表！！！！！！！！！！！！！！！！");
@@ -183,6 +194,7 @@ static void PlayGame()
                 D_noisi = 0;
             }
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
             if (H_noisi == D_noisi)
             {
                 Console.WriteLine("機械相手に引き分けって恥ずかしくないんですか？ww");
@@ -195,7 +207,13 @@ static void PlayGame()
             {
                 Console.WriteLine("負けちゃったんだぁwwwチー牛だからしょうがないかぁwww");
             }
+<<<<<<< HEAD
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+            Console.ResetColor();
+=======
             Console.WriteLine("☆☆☆w☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+>>>>>>> origin/main
         }
         static void DisplayHand(Hand h)
         {
@@ -209,29 +227,39 @@ static void PlayGame()
                 Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
             }
             //点数を表示するやつ
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("合計:" + h.GetTotal());
+            Console.ForegroundColor = ConsoleColor.Green;
             //バーストしてるかをみる
             if (h.IsBust())
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("------------------------------");
                 Console.WriteLine("おまえはもう、バーストしている");
                 Console.WriteLine("------------------------------");
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Green;
             }
         }
         static void DisplayDealer(Dealer h2)
         {
-            //Thread.Sleep(1000);
+            //先生作
+            Thread.Sleep(1000);
             foreach (Card ten2 in h2.D_Card)
             {
                 Console.WriteLine($"マーク:{ten2.mark} 数字:{ten2.nanba}");
             }
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("合計:" + h2.GetTotal());
+            Console.ForegroundColor = ConsoleColor.Green;
 
             if (h2.IsBust())
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("------------------------------");
                 Console.WriteLine("このオレが...バーストだと...！");
                 Console.WriteLine("------------------------------");
+                Console.ForegroundColor = ConsoleColor.Green;
             }
         }
     }
