@@ -12,7 +12,34 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("- - - Player Turn - - -");
+
+            while (true)
+            {
+                PlayGame();
+
+                Console.WriteLine();
+                Console.WriteLine("もう一回やる？ 1:はい / 2:いいえ");
+
+                int retry;
+                while (!int.TryParse(Console.ReadLine(), out retry) || (retry != 1 && retry != 2))
+                {
+                    Console.WriteLine("1 か 2 を入力してね");
+                }
+
+                if (retry == 2)
+                {
+                    Console.WriteLine("ゲーム終了！");
+                    break;
+                }
+
+                Console.Clear(); // 画面リセット（任意）
+            }
+        }
+
+
+static void PlayGame()
+        { 
+        Console.WriteLine("- - - Player Turn - - -");
 
             Deck deck = new Deck();
             Hand dealer = new Hand();
@@ -168,7 +195,7 @@ namespace BlackJack
             {
                 Console.WriteLine("負けちゃったんだぁwwwチー牛だからしょうがないかぁwww");
             }
-            Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+            Console.WriteLine("☆☆☆w☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
         }
         static void DisplayHand(Hand h)
         {
