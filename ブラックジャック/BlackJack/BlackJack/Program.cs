@@ -12,14 +12,14 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
-
+            int ka = 0;
 
             while (true)
             {
                 PlayGame();
 
                 Console.WriteLine();
-                Console.WriteLine("もう一回やる？ 1:はい / 2:いいえ");
+                Console.WriteLine("もう一回やるぅ？ 1:はい / 2:いいえ");
 
                 int retry;
                 while (!int.TryParse(Console.ReadLine(), out retry) || (retry != 1 && retry != 2))
@@ -175,6 +175,7 @@ static void PlayGame()
 
 
             //結果発表
+            Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
             Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
@@ -198,15 +199,24 @@ static void PlayGame()
             else if (H_noisi > D_noisi)
             {
                 Console.WriteLine("わぁ！勝てたんだぁ！勝ててよかったねぇ！...ｗ");
+
+                //kati = kati + 1;
             }
             else
             {
                 Console.WriteLine("負けちゃったんだぁwwwチー牛だからしょうがないかぁwww");
             }
-
+            
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            //Console.WriteLine($"おまえは今{kati}回勝ってまーす！");
+            //if (kati < 3)
+            //{
+            //    Console.WriteLine("もっと頑張れーｗ");
+            //}
+            //else { Console.WriteLine("そんなにたのしかった？ｗ"); }
 
         }
         static void DisplayHand(Hand h)
