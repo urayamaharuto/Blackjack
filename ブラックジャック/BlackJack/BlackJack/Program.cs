@@ -12,13 +12,7 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-            Console.ForegroundColor = ConsoleColor.Blue;
-            //Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine("- - - Player Turn - - -");
-            Console.ForegroundColor = ConsoleColor.Green;
-=======
+
 
             while (true)
             {
@@ -45,9 +39,11 @@ namespace BlackJack
 
 
 static void PlayGame()
-        { 
-        Console.WriteLine("- - - Player Turn - - -");
->>>>>>> origin/main
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("- - - Player Turn - - -");
+            Console.ForegroundColor = ConsoleColor.Green;
 
             Deck deck = new Deck();
             Hand dealer = new Hand();
@@ -207,13 +203,11 @@ static void PlayGame()
             {
                 Console.WriteLine("負けちゃったんだぁwwwチー牛だからしょうがないかぁwww");
             }
-<<<<<<< HEAD
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
             Console.ResetColor();
-=======
-            Console.WriteLine("☆☆☆w☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
->>>>>>> origin/main
+
         }
         static void DisplayHand(Hand h)
         {
