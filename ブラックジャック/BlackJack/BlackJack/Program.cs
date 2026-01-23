@@ -12,13 +12,24 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
-            int ka = 0;
+            int win = 0;
+            int lose = 0;
+            int draw = 0;
 
             while (true)
             {
-                PlayGame();
+               int  result =PlayGame();
 
+                if (result == 1) win++;
+                else if (result == -1) lose++;
+                else draw++;
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"【通算成績】 勝ち:{win} 負け:{lose} 引き分け:{draw}");
+                Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+                Console.ResetColor();
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("もう一回やるぅ？ 1:はい / 2:いいえ");
 
                 int retry;
@@ -38,7 +49,7 @@ namespace BlackJack
         }
 
 
-static void PlayGame()
+static int PlayGame()
         {
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -67,7 +78,7 @@ static void PlayGame()
                     player.AddCard(card);
 
                     Console.WriteLine("山札がありません！");
-                    return; // ゲーム停止
+                    
                 }
             }
             //cardの中に入ってるmarkとnanbaを入れている
@@ -114,7 +125,7 @@ static void PlayGame()
                             player.AddCard(card);
 
                             Console.WriteLine("山札がありません！");
-                            return; // ゲーム停止
+                            
                         }
                     }
                     //cardの中に入ってるmarkとnanbaを入れている
@@ -133,7 +144,7 @@ static void PlayGame()
                             oya.AddCard(card);
 
                             Console.WriteLine("山札がありません！");
-                            return; // ゲーム停止
+                            
                         }
                     }
 
@@ -180,6 +191,7 @@ static void PlayGame()
             Console.WriteLine();
             Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
             Console.WriteLine("結果発表！！！！！！！！！！！！！！！！");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"おまえが{H_noisi}点で、パソコン君が{D_noisi}でした！");
 
             if (H_noisi >= 22)
@@ -189,28 +201,25 @@ static void PlayGame()
             if (D_noisi >= 22)
             {
                 D_noisi = 0;
-            }
+            } 
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
             if (H_noisi == D_noisi)
             {
                 Console.WriteLine("機械相手に引き分けって恥ずかしくないんですか？ww");
+                return 0;  //引き分け
             }
             else if (H_noisi > D_noisi)
             {
                 Console.WriteLine("わぁ！勝てたんだぁ！勝ててよかったねぇ！...ｗ");
-
+                return 1;  //勝ち
                 //kati = kati + 1;
             }
             else
             {
                 Console.WriteLine("負けちゃったんだぁwwwチー牛だからしょうがないかぁwww");
+                return -1; //負け
             }
             
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Cyan;
             //Console.WriteLine($"おまえは今{kati}回勝ってまーす！");
             //if (kati < 3)
             //{
